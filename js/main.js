@@ -25,11 +25,9 @@ const createUserPic = function() {
     description: 'Супер крутая фотка, возможно дикпик',
     likes: getRandomPositiveInteger(15, 200),
     comments: getRandomPositiveInteger(0, 200)
-  }
-}
-
-console.log(createUserPic());
+  };
+};
 
 const userPic = Array.from({length: 25}, createUserPic);
 
-console.log(userPic);
+userPic();
