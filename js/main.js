@@ -1,16 +1,15 @@
-function getRandomIntInclusive(min, max) {
-  if (min < 0) {
-    min = 'error';
+function getRandomPositiveInteger (a, b) {
+  if (a < 0 || b < 0) {
+    return NaN;
   }
-  if (min > max) {
-    min = 'error';
-  }
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  const RESULT = Math.floor(Math.random() * (max - min + 1)) + min;
-  return RESULT;
+
+  const lower = Math.ceil(Math.min(a, b));
+  const upper = Math.floor(Math.max(a, b));
+
+  const result = Math.random() * (upper - lower + 1) + lower;
+
+  return Math.floor(result);
 }
-getRandomIntInclusive(22, 24);
 
 function getMaxLetter (currentLine, maxLine = 140) {
   if (currentLine > maxLine) {
@@ -18,5 +17,3 @@ function getMaxLetter (currentLine, maxLine = 140) {
   }
   return true;
 }
-
-getMaxLetter(120, 140);
