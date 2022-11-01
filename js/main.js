@@ -1,3 +1,12 @@
+const ID_START = 0;
+const ID_END = 25;
+const URL_START = 1;
+const URL_END = 25;
+const LIKES_START = 15;
+const LIKES_END = 200;
+const COMMENTS_START = 0;
+const COMMENTS_END = 200;
+
 function getRandomPositiveInteger (a, b) {
   if (a < 0 || b < 0) {
     return NaN;
@@ -18,16 +27,16 @@ function getMaxLetter (currentLine, maxLine = 140) {
 
 getMaxLetter(0, 10);
 
-const createUserPic = function() {
-  return {
-    id: getRandomPositiveInteger(0, 25),
-    url: `photos/${getRandomPositiveInteger(1, 25)}.jpg`,
-    description: 'Супер крутая фотка, возможно дикпик',
-    likes: getRandomPositiveInteger(15, 200),
-    comments: getRandomPositiveInteger(0, 200)
-  };
-};
+const description = ['Супер крутая фотка, возможно дикпик', 'Я с котом', 'Я с собакой', 'Моя семья', 'Подводная рыбкалка в Махачкале', 'Вау, мой рот цел, это чудо!!!', 'Жду лайки!!!'];
 
-const userPic = Array.from({length: 25}, createUserPic);
+const createUserPic = () => ({
+  id: getRandomPositiveInteger(ID_START, ID_END),
+  url: `photos/${getRandomPositiveInteger(URL_START, URL_END)}.jpg`,
+  description: description[getRandomPositiveInteger(0, description.length - 1)],
+  likes: getRandomPositiveInteger(LIKES_START, LIKES_END),
+  comments: getRandomPositiveInteger(COMMENTS_START, COMMENTS_END)
+});
+
+const userPic = () => Array.from({length: 25}, createUserPic);
 
 userPic();
