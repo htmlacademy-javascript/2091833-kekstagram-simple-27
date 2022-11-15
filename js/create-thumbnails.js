@@ -10,6 +10,6 @@ USER_PICTURES.forEach(({url, likes, comments}) => {
   PICTURE_ELEMENT.querySelector('.picture__img').src = url;
   PICTURE_ELEMENT.querySelector('.picture__likes').textContent = likes;
   PICTURE_ELEMENT.querySelector('.picture__comments').textContent = comments;
-  const COPY_ELEMENTS = PICTURE_ELEMENT.cloneNode(true);
-  PICTURES_CONTAINER.append(COPY_ELEMENTS);
+  const copyElement = PICTURE_ELEMENT.cloneNode(true);
+  PICTURES_CONTAINER.append(copyElement);
 });
