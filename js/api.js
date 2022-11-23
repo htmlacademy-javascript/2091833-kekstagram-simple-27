@@ -8,9 +8,8 @@ fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
     }
     else {
       showAlert('Ошибка при загрузке фотографий');
-      throw new Error(`${response.status} — ${response.statusText}`);
     }
   }
   ).then((response) => response.json())
   .then((pic) => userPicture(pic))
-  .catch((err) => {console.log(err);});
+  .catch(() => showAlert('Ошибка при загрузке фотографий'));
