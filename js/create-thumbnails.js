@@ -1,15 +1,16 @@
-import {userPic} from './create-userpic.js';
+const pictureTemplate = document.querySelector('#picture').content;
+const pictureElement = pictureTemplate.querySelector('.picture');
+const pictureContainer = document.querySelector('.pictures');
 
-const PICTURE_TEMPLATE = document.querySelector('#picture').content;
-const PICTURE_ELEMENT = PICTURE_TEMPLATE.querySelector('.picture');
-const PICTURES_CONTAINER = document.querySelector('.pictures');
+const userPicture = (pic) => {
 
-const USER_PICTURES = userPic();
+  pic.forEach(({url, likes, comments}) => {
+    pictureElement.querySelector('.picture__img').src = url;
+    pictureElement.querySelector('.picture__likes').textContent = likes;
+    pictureElement.querySelector('.picture__comments').textContent = comments;
+    const copyElement = pictureElement.cloneNode(true);
+    pictureContainer.append(copyElement);
+  });
+};
 
-USER_PICTURES.forEach(({url, likes, comments}) => {
-  PICTURE_ELEMENT.querySelector('.picture__img').src = url;
-  PICTURE_ELEMENT.querySelector('.picture__likes').textContent = likes;
-  PICTURE_ELEMENT.querySelector('.picture__comments').textContent = comments;
-  const copyElement = PICTURE_ELEMENT.cloneNode(true);
-  PICTURES_CONTAINER.append(copyElement);
-});
+export {userPicture};

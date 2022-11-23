@@ -28,3 +28,4 @@ IMG_SCALE_BIGGER.addEventListener('click', () => {
   increaseScaleValue(IMG_SCALE_CONTROL, 25);
 });
 
+export {IMG_PREVIEW, IMG_SCALE_CONTROL};
