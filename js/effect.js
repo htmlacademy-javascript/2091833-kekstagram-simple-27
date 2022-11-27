@@ -1,8 +1,26 @@
-const EFFECT_LIST = document.querySelector('.effects__list');
-const IMG_PREVIEW = document.querySelector('.img-upload__preview');
+const effectList = document.querySelector('.effects__list');
+const imgPreview = document.querySelector('.img-upload__preview');
+const effectAll = document.querySelectorAll('.effects__preview');
 
 function effectChange (evt) {
-  IMG_PREVIEW.classList.add(`effects__preview--${evt.target.value}`);
+  for (let i = 0; i < effectAll.length; i++) {
+    const effect = effectAll[i].classList.item(1);
+    if (imgPreview.classList.contains(effect)) {
+      imgPreview.classList.remove(effect);
+    }
+  }
+  imgPreview.classList.add(`effects__preview--${evt.target.value}`);
 }
 
-EFFECT_LIST.addEventListener('change', effectChange);
+function effectDelete () {
+  for (let i = 0; i < effectAll.length; i++) {
+    const effect = effectAll[i].classList.item(1);
+    if (imgPreview.classList.contains(effect)) {
+      imgPreview.classList.remove(effect);
+    }
+  }
+}
+
+effectList.addEventListener('change', effectChange);
+
+export {effectDelete};

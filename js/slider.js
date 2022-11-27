@@ -1,31 +1,33 @@
-const IMG_SCALE = document.querySelector('.img-upload__scale');
-const IMG_SCALE_SMALLER = IMG_SCALE.querySelector('.scale__control--smaller');
-const IMG_SCALE_BIGGER = IMG_SCALE.querySelector('.scale__control--bigger');
-const IMG_SCALE_CONTROL = IMG_SCALE.querySelector('.scale__control--value');
-const IMG_PREVIEW = document.querySelector('.img-upload__preview');
+const imgScale = document.querySelector('.img-upload__scale');
+const imgScaleSmaller = imgScale.querySelector('.scale__control--smaller');
+const imgScaleBigger = imgScale.querySelector('.scale__control--bigger');
+const imgScaleControl = imgScale.querySelector('.scale__control--value');
+const imgPreview = document.querySelector('.img-upload__preview');
+const PERCENT_VALUE = 25;
+const MAX_VALUE = 100;
 
 const reduceScaleValue = function (scaleValue, percent) {
-  if (parseFloat(scaleValue.value) > 25) {
+  if (parseFloat(scaleValue.value) > PERCENT_VALUE) {
     scaleValue.value = `${parseFloat(scaleValue.value) - percent}%`;
-    IMG_PREVIEW.style.transform = `scale(${scaleValue.value})`;
+    imgPreview.style.transform = `scale(${scaleValue.value})`;
     return scaleValue.value;
   }
 };
 
 const increaseScaleValue = function (scaleValue, percent) {
-  if (parseFloat(scaleValue.value) < 100) {
+  if (parseFloat(scaleValue.value) < MAX_VALUE) {
     scaleValue.value = `${parseFloat(scaleValue.value) + percent}%`;
-    IMG_PREVIEW.style.transform = `scale(${scaleValue.value})`;
+    imgPreview.style.transform = `scale(${scaleValue.value})`;
     return scaleValue.value;
   }
 };
 
-IMG_SCALE_SMALLER.addEventListener('click', () => {
-  reduceScaleValue(IMG_SCALE_CONTROL, 25);
+imgScaleSmaller.addEventListener('click', () => {
+  reduceScaleValue(imgScaleControl, PERCENT_VALUE);
 });
 
-IMG_SCALE_BIGGER.addEventListener('click', () => {
-  increaseScaleValue(IMG_SCALE_CONTROL, 25);
+imgScaleBigger.addEventListener('click', () => {
+  increaseScaleValue(imgScaleControl, PERCENT_VALUE);
 });
 
-export {IMG_PREVIEW, IMG_SCALE_CONTROL};
+export {imgPreview, imgScaleControl};

@@ -1,5 +1,6 @@
 import { isEscape } from './utils.js';
-import {clearDescription} from './form-addons.js';
+import { clearDescription } from './form-addons.js';
+import { effectDelete } from './effect.js';
 
 const uploadWindow = document.querySelector('.img-upload__overlay');
 const uploadFile = document.querySelector('#upload-file');
@@ -25,6 +26,7 @@ function closeUploadWindow () {
   bodyDoc.classList.remove('modal-open');
   uploadFile.value = '';
   clearDescription();
+  effectDelete();
   bodyDoc.removeEventListener('keydown', onPopupEscKeydown);
 }
 
